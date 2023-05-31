@@ -23,7 +23,7 @@ class BrandsController < ApplicationController
   end
 
   def update
-    if @brand.update_attributes(brand_params)
+    if @brand.update(brand_params)
       redirect_to @brand, flash: { success: "Brand updated successfully." }
     else
       render 'edit'

@@ -34,7 +34,7 @@ class IssuesController < ApplicationController
   def mark_as_solved
     data = issue_solve_params.merge(solved_at: DateTime.now)
     @user = User.find(@issue.user_id)
-    if @issue.update_attributes(data)
+    if @issue.update(data)
       redirect_to @issue, flash: { success: "Issue marked as solved successfully." }
       NotificationMailer.issue_notification(@user, @issue).deliver_now
     else

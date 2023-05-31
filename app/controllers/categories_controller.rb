@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update_attributes(category_params)
+    if @category.update(category_params)
       redirect_to @category, flash: { success: "Category updated successfully." }
     else
       render 'edit'

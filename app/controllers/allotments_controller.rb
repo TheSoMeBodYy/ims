@@ -36,7 +36,7 @@ class AllotmentsController < ApplicationController
   def update
     if @item.in_stock < update_quantity_params[:allotment_quantity].to_i
       redirect_to edit_allotment_path(@item), flash: { warning: "Total stock of this item is NOT sufficient for this allotment." }
-    elsif @allotment.update_attributes(update_quantity_params)
+    elsif @allotment.update(update_quantity_params)
       successful_stock_update
     else
       render 'edit'

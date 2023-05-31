@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_edit_params)
+    if @user.update(user_edit_params)
       redirect_to @user, flash: { success: "Profile updated." }
     else
       render 'edit'
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    if @user.update_attributes(user_pwd_params)
+    if @user.update(user_pwd_params)
       redirect_to @user, flash: { success: "Successfully changed password." }
     else
       render 'edit'
